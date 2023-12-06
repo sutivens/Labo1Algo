@@ -29,9 +29,10 @@ public class BiblioList extends Bibliotheque {
             Ouvrage ouvrage = rechercherOuvrage(cote);
             if (ouvrage != null) {
                 listeOuvrages.remove(ouvrage);
+                System.out.println("Supprimé!\n");
             }
         } catch (Exception e) {
-            System.out.println("saisi non valide");
+            System.out.println("Saisi non valide");
         }
     }
 

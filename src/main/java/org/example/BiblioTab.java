@@ -32,13 +32,24 @@ public class BiblioTab extends Bibliotheque {
         try {
             Ouvrage ouvrage = rechercherOuvrage(cote); // Si on ne trouve pas d'ouvrages, ça retourne null, alors il faut prévenir l'extraction du côte lorsque l'objet en question est nul, sinon ça génère une exception
             if (ouvrage != null) {
-                int idxPourSupprimer = ouvrage.getCote();
+                int idxPourSupprimer = -1;
 
-                // Le for loop ne s'exécute pas si la ligne précédente génère une exception
-                for (int i = idxPourSupprimer; i < listeOuvrages.length - 1; i++) {
-                    listeOuvrages[i] = listeOuvrages[i + 1];
+                // Find the index of the ouvrage in the array
+                for (int i = 0; i < listeOuvrages.length; i++) {
+                    if (listeOuvrages[i] != null && listeOuvrages[i].equals(ouvrage)) {
+                        idxPourSupprimer = i;
+                        break;
+                    }
                 }
-                idx--;
+                if (idxPourSupprimer != -1) {
+                    for (int i = idxPourSupprimer; i < listeOuvrages.length - 1; i++) {
+                        listeOuvrages[i] = listeOuvrages[i + 1];
+                    }
+                    idx--;
+                    System.out.println("Supprimé!\n");
+                }else {
+                    System.out.println("Erreur! Ouvrage introuvable.\n");
+                }
             }
         } catch (Exception e) {
             System.out.println("Erreur! Vous n'avez pas entré un nombre ou chiffres valides.\n");

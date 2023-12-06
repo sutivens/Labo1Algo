@@ -9,16 +9,10 @@ public class BiblioListPerso extends Bibliotheque {
 
     public void ajouterOuvrage(Ouvrage ouvrage) {
         listeOuvrages.ajouterFin(ouvrage);
-        System.out.println("Ouvrage ajouté!\n");
     }
 
     public Ouvrage rechercherOuvrage(int cote) {
-        Ouvrage ouvrage = listeOuvrages.rechercherOuvrage(cote);
-
-        if (ouvrage != null) {
-            System.out.println(listeOuvrages.toString());
-        }
-        return ouvrage;
+        return listeOuvrages.rechercherOuvrage(cote);
     }
 
 
@@ -26,10 +20,13 @@ public class BiblioListPerso extends Bibliotheque {
         try {
             Ouvrage ouvrage = rechercherOuvrage(cote);
             if (ouvrage != null) {
-                listeOuvrages.supprimerPosition(cote);
+                listeOuvrages.supprimerOuvrage(cote);
+                System.out.println("Supprimé!\n");
+            } else {
+                System.out.println("Erreur! Ouvrage introuvable.\n");
             }
         } catch (Exception e) {
-            System.out.println("saisi non valide");
+            System.out.println("Saisi non valide");
         }
     }
 

@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.*;
 
-public class GestionBibliotheque {
+public class GestionBibliothequeTab {
     public static void main(String[] args) {
         boolean fin = false;
         BiblioTab bibliotab = new BiblioTab();
